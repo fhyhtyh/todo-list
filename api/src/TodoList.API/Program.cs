@@ -1,12 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using TodoList.Domain.Interfaces;
-using TodoList.Infrastructure.Data;
-using TodoList.Infrastructure.Repositories;
+using TodoList.Application;
+using TodoList.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,14 +31,9 @@ builder.Services.AddOpenTelemetry()
                });
     });
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("TodoList.Infrastructure")));
-
-builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
-
-builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(typeof(TodoList.Application.Tasks.Commands.CreateTaskCommand).Assembly));
+builder.Services
+    .AddApplication()
+    .AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
 

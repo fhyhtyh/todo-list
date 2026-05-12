@@ -3,6 +3,7 @@ using TodoList.Application.Tasks.Commands;
 
 namespace TodoList.Application;
 
+[ExcludeFromCodeCoverage]
 public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)

@@ -1,14 +1,11 @@
-import { useState } from 'react'
-import './App.css'
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
+import './App.css';
 
 function App() {
   return (
-    <>
-      <div>
-        <h1>Todo List</h1>
-      </div>
-    </>
-  )
+    <RouterProvider router={router} />
+  );
 }
 
-export default App
+export default App;

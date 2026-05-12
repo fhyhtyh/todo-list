@@ -1,0 +1,89 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-0 {
+  background: #6366f1;
+}
+
+.dot-1 {
+  background: #f59e0b;
+}
+
+.dot-2 {
+  background: #10b981;
+}
+
+.groupLabel {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-h);
+  flex: 1;
+}
+
+.groupCount {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--border);
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+
+.groupCards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.groupCards>article {
+  max-width: none;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: var(--text);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.empty p {
+  font-size: 15px;
+  opacity: 0.7;
+}

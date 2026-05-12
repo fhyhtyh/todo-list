@@ -3,16 +3,16 @@ import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { Resource } from '@opentelemetry/resources';
+import { resourceFromAttributes } from '@opentelemetry/resources';
 
 const provider = new WebTracerProvider({
-  resource: new Resource({
+  resource: resourceFromAttributes({
     'service.name': 'todo-list-client',
   }),
 });
 
 provider.addSpanProcessor(new BatchSpanProcessor(new OTLPTraceExporter({
-  url: 'http://localhost:4318/v1/traces', 
+  url: 'http://localhost:4318/v1/traces',
 })));
 
 provider.register({

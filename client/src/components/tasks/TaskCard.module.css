@@ -1,0 +1,254 @@
+.card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 420px;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: visible;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.card[draggable="true"] {
+  cursor: grab;
+}
+
+.card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--accent, #6366f1);
+  outline-offset: 2px;
+}
+
+.card.dragging {
+  opacity: 0.45;
+  transform: scale(0.97) rotate(1deg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  cursor: grabbing;
+}
+
+.pending {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.pendingOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: inherit;
+  backdrop-filter: blur(1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .pendingOverlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.strip {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 12px 0 0 12px;
+}
+
+.status-0 .strip {
+  background: #6366f1;
+}
+
+.status-1 .strip {
+  background: #f59e0b;
+}
+
+.status-2 .strip {
+  background: #10b981;
+}
+
+.body {
+  flex: 1;
+  padding: 14px 16px;
+  min-width: 0;
+  overflow: visible;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  line-height: 1;
+}
+
+.badge-0 {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+.badge-1 {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.badge-2 {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 6px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.description {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  max-width: 100%;
+  margin: 0 0 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text);
+  margin-top: 10px;
+}
+
+.deadline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.overdue {
+  color: #ef4444;
+}
+
+.createdAt {
+  margin-left: auto;
+  opacity: 0.6;
+  font-size: 11px;
+}
+
+.menuWrapper {
+  position: relative;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menuBtn:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 100;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 4px;
+  min-width: 180px;
+  list-style: none;
+  margin: 0;
+  animation: fadeIn 0.12s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu li button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-h);
+  font-size: 13px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.12s;
+  font-family: inherit;
+}
+
+.menu li button:hover {
+  background: var(--accent-bg);
+}
+
+.menuDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.menuDanger button {
+  color: #ef4444 !important;
+}
+
+.menuDanger button:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+}

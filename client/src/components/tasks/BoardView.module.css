@@ -1,0 +1,134 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+  padding: 4px 2px;
+}
+
+@media (max-width: 900px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  background: var(--code-bg);
+  border-radius: 16px;
+  padding: 16px;
+  min-height: 200px;
+  border: 1px solid var(--border);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.columnOver {
+  background: color-mix(in srgb, var(--accent) 6%, var(--code-bg));
+  box-shadow: 0 0 0 2px var(--accent), 0 4px 20px rgba(99, 102, 241, 0.12);
+}
+
+.column-0 {
+  border-top: 3px solid #6366f1;
+}
+
+.column-1 {
+  border-top: 3px solid #f59e0b;
+}
+
+.column-2 {
+  border-top: 3px solid #10b981;
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.columnIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.columnTitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--text-h);
+  margin: 0;
+  flex: 1;
+}
+
+.count {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 0 6px;
+}
+
+.count-0 {
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+}
+
+.count-1 {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+
+.count-2 {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 13px;
+  opacity: 0.55;
+  transition: border-color 0.15s, opacity 0.15s;
+}
+
+.emptyOver {
+  border-color: var(--accent);
+  opacity: 1;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+}
+
+.dropHint {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+  opacity: 0.6;
+  animation: pulseDrop 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulseDrop {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 0.9;
+  }
+}

@@ -1,10 +1,8 @@
-export const TaskStatus = {
-  Todo: 0,
-  InProgress: 1,
-  Done: 2
-} as const;
-
-export type TaskStatus = typeof TaskStatus[keyof typeof TaskStatus];
+export enum TaskStatus {
+  Todo = 0,
+  InProgress = 1,
+  Done = 2
+}
 
 export interface Task {
   id: string;

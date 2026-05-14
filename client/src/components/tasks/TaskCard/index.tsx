@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Spin } from 'antd';
-import type { Task } from '../../types/task';
-import { TaskStatus } from '../../types/task';
-import styles from './TaskCard.module.css';
+import type { Task } from '../../../types/task';
+import { TaskStatus } from '../../../types/task';
+import styles from './styles.module.css';
 
 interface TaskCardProps {
   task: Task;

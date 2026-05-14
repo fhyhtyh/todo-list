@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import type { Task } from '../../types/task';
-import { TaskStatus } from '../../types/task';
-import { TaskCard } from './TaskCard';
-import styles from './BoardView.module.css';
+import type { Task } from '../../../types/task';
+import { TaskStatus } from '../../../types/task';
+import { TaskCard } from '../TaskCard';
+import styles from './styles.module.css';
 
 interface BoardViewProps {
   tasks: Task[];

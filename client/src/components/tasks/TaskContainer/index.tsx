@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Spin } from 'antd';
-import type { Task } from '../../types/task';
-import { TaskStatus } from '../../types/task';
-import { BoardView } from './BoardView';
-import { ListView } from './ListView';
-import styles from './TaskContainer.module.css';
+import type { Task } from '../../../types/task';
+import { TaskStatus } from '../../../types/task';
+import { BoardView } from '../BoardView';
+import { ListView } from '../ListView';
+import styles from './styles.module.css';
 
 type ViewMode = 'board' | 'list';
 type SortKey = 'createdAt' | 'deadline' | 'title';

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Spin, Alert } from 'antd';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../../types/task';
-import styles from './TaskModal.module.css';
+import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../../../types/task';
+import styles from './styles.module.css';
 
 interface TaskModalProps {
   isOpen: boolean;

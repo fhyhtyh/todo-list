@@ -1,8 +1,8 @@
 import React from 'react';
-import type { Task } from '../../types/task';
-import { TaskStatus } from '../../types/task';
-import { TaskCard } from './TaskCard';
-import styles from './ListView.module.css';
+import type { Task } from '../../../types/task';
+import { TaskStatus } from '../../../types/task';
+import { TaskCard } from '../TaskCard';
+import styles from './styles.module.css';
 
 interface ListViewProps {
   tasks: Task[];

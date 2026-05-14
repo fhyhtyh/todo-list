@@ -8,8 +8,8 @@ import type {
 
 export const tasksApi = createApi({
   reducerPath: 'tasksApi',
-  baseQuery: fetchBaseQuery({ 
-    baseUrl: typeof process !== 'undefined' && process.env.NODE_ENV === 'test' ? 'http://localhost/api' : '/api' 
+  baseQuery: fetchBaseQuery({
+    baseUrl: typeof process !== 'undefined' && process.env.NODE_ENV === 'test' ? 'http://localhost/api' : '/api'
   }),
   tagTypes: ['Task'],
   endpoints: (builder) => ({

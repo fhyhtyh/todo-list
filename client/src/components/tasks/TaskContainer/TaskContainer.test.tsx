@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, within } from '@testing-library/react';
-import { TaskContainer } from './TaskContainer';
-import { TaskStatus } from '../../types/task';
-import type { Task } from '../../types/task';
+import { TaskContainer } from '../TaskContainer';
+import { TaskStatus } from '../../../types/task';
+import type { Task } from '../../../types/task';
 
 describe('TaskContainer Component - Filtering and Sorting', () => {
   const mockTasks: Task[] = [
@@ -31,7 +31,7 @@ describe('TaskContainer Component - Filtering and Sorting', () => {
   it('should filter tasks by status', () => {
     // Arrange
     render(<TaskContainer tasks={mockTasks} />);
-    
+
     // Check initial state (all tasks)
     expect(screen.getByText('A Task')).toBeInTheDocument();
     expect(screen.getByText('Z Task')).toBeInTheDocument();
@@ -68,14 +68,14 @@ describe('TaskContainer Component - Filtering and Sorting', () => {
       { id: '2', title: 'M Task', description: '', status: TaskStatus.Todo, createdAt: '2026-05-11T10:00:00Z' },
       { id: '3', title: 'A Task', description: '', status: TaskStatus.Todo, createdAt: '2026-05-12T10:00:00Z' }
     ];
-    
+
     // Default order (createdAt descending): A Task, M Task, Z Task
     const { container } = render(<TaskContainer tasks={sortTasks} />);
 
     // Switch to list view to ensure stable DOM querying
     const listViewBtn = screen.getByTitle('List view');
     fireEvent.click(listViewBtn);
-    
+
     // Act - Sort by title
     const sortSelect = screen.getByLabelText('Sort tasks');
     fireEvent.change(sortSelect, { target: { value: 'title' } });

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { TaskCard } from './TaskCard';
-import { TaskStatus } from '../../types/task';
-import type { Task } from '../../types/task';
+import { TaskCard } from '../TaskCard';
+import { TaskStatus } from '../../../types/task';
+import type { Task } from '../../../types/task';
 
 describe('TaskCard Component', () => {
   const mockTask: Task = {
@@ -18,9 +18,9 @@ describe('TaskCard Component', () => {
 
     // Act
     render(
-      <TaskCard 
-        task={mockTask} 
-        onViewDetails={onViewDetailsMock} 
+      <TaskCard
+        task={mockTask}
+        onViewDetails={onViewDetailsMock}
       />
     );
 
@@ -33,9 +33,9 @@ describe('TaskCard Component', () => {
     // Arrange
     const onViewDetailsMock = jest.fn();
     const { container } = render(
-      <TaskCard 
-        task={mockTask} 
-        onViewDetails={onViewDetailsMock} 
+      <TaskCard
+        task={mockTask}
+        onViewDetails={onViewDetailsMock}
       />
     );
 

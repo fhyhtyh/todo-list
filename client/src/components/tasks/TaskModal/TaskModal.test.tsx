@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { TaskModal } from './TaskModal';
+import { TaskModal } from '../TaskModal';
 
 describe('TaskModal Component', () => {
   const onCloseMock = jest.fn();
@@ -12,10 +12,10 @@ describe('TaskModal Component', () => {
   it('should not call onSubmit if title is empty (button should be disabled)', () => {
     // Arrange
     render(
-      <TaskModal 
-        isOpen={true} 
-        onClose={onCloseMock} 
-        onSubmit={onSubmitMock} 
+      <TaskModal
+        isOpen={true}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
       />
     );
 
@@ -27,23 +27,23 @@ describe('TaskModal Component', () => {
   it('should call onSubmit with form data when valid', () => {
     // Arrange
     render(
-      <TaskModal 
-        isOpen={true} 
-        onClose={onCloseMock} 
-        onSubmit={onSubmitMock} 
+      <TaskModal
+        isOpen={true}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
       />
     );
 
     // Act
     const titleInput = screen.getByLabelText(/title/i);
     const descInput = screen.getByLabelText(/description/i);
-    
+
     fireEvent.change(titleInput, { target: { value: 'New Task' } });
     fireEvent.change(descInput, { target: { value: 'Some description' } });
 
     const submitBtn = screen.getByRole('button', { name: /create task/i });
     expect(submitBtn).not.toBeDisabled();
-    
+
     fireEvent.click(submitBtn);
 
     // Assert
@@ -66,10 +66,10 @@ describe('TaskModal Component', () => {
     };
 
     render(
-      <TaskModal 
-        isOpen={true} 
-        onClose={onCloseMock} 
-        onSubmit={onSubmitMock} 
+      <TaskModal
+        isOpen={true}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
         initialData={initialData}
       />
     );

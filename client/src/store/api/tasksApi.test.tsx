@@ -57,7 +57,6 @@ describe('tasksApi with MSW', () => {
   it('1. Test Successful Data Fetching (Queries)', async () => {
     const TestComponent = () => {
       const { data, isLoading, isSuccess, error } = useGetTasksQuery();
-      console.log('Test 1 - data:', data, 'error:', error);
 
       return (
         <div>

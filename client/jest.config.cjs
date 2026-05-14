@@ -10,16 +10,21 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', {
-      useESM: true,
-      tsconfig: {
-        verbatimModuleSyntax: false,
-        jsx: 'react-jsx',
-        esModuleInterop: true,
-      },
-      diagnostics: {
-        warnOnly: true
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        isolatedModules: true,
+        useESM: true,
+        tsconfig: {
+          verbatimModuleSyntax: false,
+          jsx: 'react-jsx',
+          esModuleInterop: true,
+        },
+        diagnostics: {
+          warnOnly: true
+        }
       }
-    }]
+    ]
   },
+  transformIgnorePatterns: ['/node_modules/']
 };

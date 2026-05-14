@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Spin, Alert } from 'antd';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { Spin, Alert, DatePicker, ConfigProvider, theme } from 'antd';
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../../../types/task';
 import styles from './styles.module.css';
 
@@ -24,14 +24,14 @@ export const TaskModal: React.FC<TaskModalProps> = ({
 }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [deadline, setDeadline] = useState<Date | null>(null);
+  const [deadline, setDeadline] = useState<Dayjs | null>(null);
 
   useEffect(() => {
     if (isOpen) {
       if (initialData) {
         setTitle(initialData.title);
         setDescription(initialData.description || '');
-        setDeadline(initialData.deadline ? new Date(initialData.deadline) : null);
+        setDeadline(initialData.deadline ? dayjs(initialData.deadline) : null);
       } else {
         setTitle('');
         setDescription('');
@@ -106,17 +106,18 @@ export const TaskModal: React.FC<TaskModalProps> = ({
           <div className={styles.formGroup}>
             <label htmlFor="task-deadline" className={styles.label}>Deadline</label>
             <div className={styles.datePickerWrapper}>
-              <DatePicker
-                id="task-deadline"
-                selected={deadline}
-                onChange={(date: Date | null) => setDeadline(date)}
-                className={styles.input}
-                placeholderText="Select a deadline"
-                isClearable
-                showTimeSelect
-                dateFormat="MMM d, yyyy h:mm aa"
-                disabled={isLoading}
-              />
+              <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+                <DatePicker
+                  id="task-deadline"
+                  value={deadline}
+                  onChange={(date) => setDeadline(date)}
+                  placeholder="Select a deadline"
+                  allowClear
+                  format="MMM D, YYYY"
+                  disabled={isLoading}
+                  style={{ width: '100%', height: '44px', borderRadius: '10px' }}
+                />
+              </ConfigProvider>
             </div>
           </div>
 
